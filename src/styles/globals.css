@@ -1,3 +1,5 @@
+@import '../styles/orderGrid.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +20,165 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+.promotions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.promo-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.promo-item h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.promo-item p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.promo-item button {
+  background-color: #ff6f61;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.promo-item button:hover {
+  background-color: #ff3b2f;
+}
+
+:root {
+  --header-height: 106px;
+
+  /* ====== COLORS ====== */
+  --private-color: rgb(31,41,55); 
+  --private-back: rgb(243, 248, 242);
+  --hovered-color: rgb(243, 248, 242);
+  --gray: #d6d6d6;
+  --gray-light: #f5f5f5;
+
+  /* ====== BREAKPOINTS ====== */
+  --desktop-md: 1200px;
+  --desktop-sm: 1024px;
+  --tablet: 912px;
+  --tablet-sm: 768px;
+  --mobile: 540px;
+  --mobile-sm: 425px;
+  --xs: 320px;
+}
+
+body {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+*,
+*::after,
+*::before {
+  font-weight: 200;
+  box-sizing: border-box;
+
+  padding: 0;
+  margin: 0;
+}
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 28px;
+}
+h2 {
+  font-size: 26px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 16px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 46px;
+
+  border: 1px solid gray;
+  border-radius: 6px;
+
+  padding-inline: 8px;
+}
+
+select:focus {
+  outline: 1px solid rgb(209, 193, 138);
+  border: 2px solid rgb(209, 193, 138);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  outline: none;
+
+  cursor: pointer;
+
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+
+  accent-color: rgb(209, 193, 138);
+}
+
+button {
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  width: 100%;
+  height: 48px;
+
+  background-color: var(--private-color);
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+
+button:disabled {
+  background-color: var(--gray-light);
+  border: 1px solid var(--gray);
+  color: gray;
 }

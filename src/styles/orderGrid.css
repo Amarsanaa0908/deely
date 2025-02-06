@@ -1,0 +1,105 @@
+:root {
+  --order-foot-height: 60px;
+}
+
+.orderGrid {
+  display: grid;
+  grid-template-columns: auto 600px 500px auto;
+
+  grid-template-areas:
+    '.            oderForm      orderInfo   orderInfo'
+    'orderFooter  orderFooter   orderInfo   orderInfo';
+}
+
+.orderGrid_form {
+  grid-area: oderForm;
+
+  border-right: 1px solid var(--gray);
+  padding: 36px 36px 36px 0;
+}
+
+.orderGrid_info_wrapper {
+  grid-area: orderInfo;
+
+  background-color: var(--gray-light);
+  padding-right: 24px;
+}
+.orderGrid_info {
+  max-width: 500px;
+  width: 100%;
+
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  padding: 36px 0 0 36px;
+}
+
+.orderGrid_footer {
+  grid-area: orderFooter;
+
+  height: var(--order-foot-height);
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  border-right: 1px solid var(--gray);
+  border-top: 1px solid var(--gray);
+
+  padding-left: 24px;
+}
+.orderGrid_footer p {
+  max-width: 600px;
+  width: 100%;
+
+  color: gray;
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .orderGrid {
+    grid-template-columns: auto 1fr 1fr auto;
+  }
+
+  .orderGrid_form {
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orderGrid {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      'oderForm'
+      'orderInfo'
+      'orderFooter';
+
+    background-color: var(--gray-light);
+  }
+
+  .orderGrid_form {
+    border: none;
+    background-color: white;
+  }
+
+  .orderGrid_info_wrapper {
+    padding: 0;
+  }
+
+  .orderGrid_info {
+    background-color: white;
+    padding: 36px;
+
+    margin-top: 16px;
+  }
+
+  .orderGrid_footer {
+    border-right: none;
+    background-color: white;
+  }
+}
