@@ -34,6 +34,7 @@ const apiList = {
   delivery: 'delivery',
   draft: 'draft',
   payment: 'payment',
+  update: 'update',
 };
 
 export { apiList, callGet, callPost, callPromiseAllInstance };

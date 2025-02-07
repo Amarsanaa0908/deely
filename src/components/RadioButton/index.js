@@ -31,7 +31,13 @@ const RadioButton = ({
 
       {icon && (
         <span className={css.icon}>
-          <Image width={200} height={200} className='w-8' src={icon} />
+          <Image
+            alt={icon}
+            width={200}
+            height={200}
+            className='w-8'
+            src={icon}
+          />
         </span>
       )}
       {rightZone && rightZone}

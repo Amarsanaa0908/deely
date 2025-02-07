@@ -33,9 +33,10 @@ const Checkout = () => {
   }, [id]);
 
   const onSubmit = (data) => {
-    console.log(data);
     setLoading(true);
-    callPost(`${apiList.payment}`, {
+    callPost(`${apiList.update}`, {
+      id: id,
+      email: data.email,
       phoneNumber: data.phoneNumber,
       firstName: data.firstName,
       lastName: data.lastName,
@@ -66,6 +67,7 @@ const Checkout = () => {
             <Image
               width={200}
               height={200}
+              alt={`Deely Logo`}
               src={`https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447`}
             />
           </div>
@@ -168,7 +170,13 @@ const Checkout = () => {
 
                 <span className='flex gap-2'>
                   <Input placeholder='Хот' />
-                  <Input placeholder='Postal code (optional)' />
+                  <Input
+                    register={register}
+                    id={'additionalNumber'}
+                    value={watch('additionalNumber')}
+                    placeholder='Нэмэлт утасны дугаар (optional)'
+                    hasError={errors.additionalNumber}
+                  />
                 </span>
 
                 <Input
@@ -228,10 +236,12 @@ const Checkout = () => {
                     <div key={i} className='flex justify-between items-center'>
                       <div className='flex items-center gap-2'>
                         <figure className='relative w-16 h-16'>
-                          <img
+                          <Image
+                            width={200}
+                            height={200}
                             className='w-full h-full object-cover border rounded-md'
                             src={el.image}
-                            alt='no file'
+                            alt={el.name}
                           />
 
                           <p className='absolute -top-2 -right-2 w-5 h-5 flex justify-center items-center rounded-full bg-gray-400 text-white'>
