@@ -33,6 +33,7 @@ const apiList = {
   customer: 'customer',
   delivery: 'delivery',
   draft: 'draft',
+  payment: 'payment',
 };
 
 export { apiList, callGet, callPost, callPromiseAllInstance };
