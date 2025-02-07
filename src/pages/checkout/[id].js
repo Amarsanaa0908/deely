@@ -2,8 +2,27 @@ import Checkbox from '@/components/Checkbox';
 import Input from '@/components/Input';
 import RadioButton from '@/components/RadioButton';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { apiList, callGet } from '../api/api';
 
 const Checkout = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [items, setItems] = useState([]);
+  const [price, setPrice] = useState();
+
+  useEffect(() => {
+    if (id) {
+      callGet(`${apiList.draft}/${id}`).then((res) => {
+        console.log(res?.data);
+        setItems(res?.data?.lineItems);
+        setPrice(res?.data?.amount);
+        console.log(items);
+      });
+    }
+  }, [id]);
+
   const handleSubmit = () => {
     console.log('first');
   };
@@ -62,18 +81,7 @@ const Checkout = () => {
             </div>
             <div className='flex flex-col gap-2'>
               <span className='flex flex-col-reverse lg:flex-row justify-between items-center gap-1'>
-                <h4>Delivery</h4>
-                {/* <h4> Харилцагчийн мэдээлэл</h4> */}
-
-                {/* <span>
-                  Бүртгэлтэй юу?
-                  <Link
-                    href='/'
-                    className='underline text-stone-400 ml-1 hover:opacity-60'
-                  >
-                    Нэвтрэх
-                  </Link>
-                </span> */}
+                <h4>Хүргэлтийн мэдээлэл</h4>
               </span>
 
               <Input
@@ -134,33 +142,7 @@ const Checkout = () => {
                 // onChange={handleChange}
                 // onBlur={setFieldTouched}
               />
-
-              {/* <Checkbox
-                  label='Хямдрал зарлагдахад мэдэгдэл авах'
-                  name='saleNotif'
-                /> */}
             </div>
-
-            {/* <div className='flex flex-col gap-2'>
-                <h4>Хүргэлт</h4>
-              </div>
-
-              <UserInfo
-                values={values}
-                touched={touched}
-                errors={errors}
-                setFieldTouched={setFieldTouched}
-                handleChange={handleChange}
-              /> */}
-
-            {/* <PickupLocations handleChange={handleChange} /> */}
-
-            {/* <div className='flex flex-col gap-2'>
-                <Checkbox
-                  label='Дараагийн худалдан авалтад зориулж хадгалах'
-                  name='saveAfter'
-                />
-              </div> */}
 
             <div className='flex flex-col gap-2'>
               <h5>Хүргэлтийн хэлбэр</h5>
@@ -198,7 +180,7 @@ const Checkout = () => {
 
         <div className='orderGrid_info_wrapper'>
           <div className='orderGrid_info'>
-            {/* {items &&
+            {items &&
               items.map((el, i) => {
                 return (
                   <div key={i} className='flex justify-between items-center'>
@@ -206,7 +188,7 @@ const Checkout = () => {
                       <figure className='relative w-16 h-16'>
                         <img
                           className='w-full h-full object-cover border rounded-md'
-                          src={`https://api.vistaline.store${el.image}`}
+                          src={el.image}
                           alt='no file'
                         />
 
@@ -221,15 +203,15 @@ const Checkout = () => {
                       </span>
                     </div>
 
-                    <label>₮ {currencyFormat(el.price * el.quantity)}</label>
+                    <label>₮ {el.price * el.quantity}</label>
                   </div>
                 );
-              })} */}
+              })}
 
             <div className='flex flex-col gap-2'>
               <p className='flex justify-between'>
                 <label>Нийт</label>
-                {/* <b>{currencyFormat(calculateCartTotal(items))}</b> */}
+                <b>{price}</b>
               </p>
 
               <p className='flex justify-between'>
@@ -240,7 +222,7 @@ const Checkout = () => {
                 <b>Нийт</b>
                 <span>
                   <label>MNT </label>
-                  {/* <b>{currencyFormat(calculateCartTotal(items))}</b> */}
+                  {price}
                 </span>
               </p>
             </div>
