@@ -6,7 +6,6 @@ import Modal from 'react-minimal-modal';
 
 const PaymentModal = ({ open, setOpen, data, id }) => {
   const router = useRouter();
-  console.log(data);
 
   const handleClick = () => {
     callGet(`${apiList.payment}/check/${data?.orderId}`).then((res) => {
@@ -15,6 +14,7 @@ const PaymentModal = ({ open, setOpen, data, id }) => {
       }
     });
   };
+
   return (
     <Modal open={open} onClose={() => setOpen(false)}>
       <div className='flex flex-col items-center gap-8'>

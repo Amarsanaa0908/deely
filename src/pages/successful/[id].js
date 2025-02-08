@@ -4,6 +4,7 @@ import { FaAngleDown } from 'react-icons/fa6';
 import { LuShoppingCart } from 'react-icons/lu';
 
 import css from '@/styles/thankU.module.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { apiList, callGet } from '../api/api';
@@ -35,12 +36,14 @@ const Successful = () => {
   const renderMobileSummary = () => {
     return (
       <>
-        <img
-          className={css.mblLogo}
-          src={
-            'https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447'
-          }
-        />
+        <Link className={css.mblLogo} href={'https://www.thedeely.com'}>
+          <img
+            className={css.mblLogo}
+            src={
+              'https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447'
+            }
+          />
+        </Link>
         <div className={css.mblSummary}>
           <button
             className={css.mblSummary_headWrapper}
@@ -54,7 +57,7 @@ const Successful = () => {
                 </p>
                 <FaAngleDown style={{ marginTop: 6 }} />
               </span>
-              <b className={css.mblSummary_head_payment}>₮188000</b>
+              {/* <b className={css.mblSummary_head_payment}>₮188000</b> */}
             </div>
           </button>
 
@@ -86,10 +89,7 @@ const Successful = () => {
 
               <hr />
 
-              <div className={css.summary_payment}>
-                <p>Нийт</p>
-                <b>₮ 188000</b>
-              </div>
+              <div className={css.summary_payment}></div>
               <div className={css.summary_payment}>
                 <p>Хүргэлт</p>
                 <b>
@@ -104,13 +104,6 @@ const Successful = () => {
               </div> */}
 
               <hr />
-
-              <div className={css.summary_payment}>
-                <p>Нийт</p>
-                <span className={css.summary_total_payment}>
-                  MNT <span>₮ 188000</span>
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -124,14 +117,14 @@ const Successful = () => {
 
       <div className={css.infoWrapper}>
         <div className={css.info}>
-          <div className={css.logoWrapper}>
+          <Link href={'https://www.thedeely.com'} className={css.logoWrapper}>
             <img
               className={css.logo}
               src={
                 'https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447'
               }
             />
-          </div>
+          </Link>
 
           <div className={css.info_head}>
             <CiCircleCheck color='#5b6e5d' size={62} />
@@ -143,7 +136,16 @@ const Successful = () => {
           </div>
 
           <div className={css.bank}>
-            <div className={css.bank_map}></div>
+            <div className={css.bank_map}>
+              <Image
+                className='w-full h-[200px] p-1'
+                width={500}
+                height={500}
+                src={
+                  'https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447'
+                }
+              />
+            </div>
 
             <div className={css.bank_info}>
               <b className={css.infoTitle}>Таны захиалга баталгаажлаа</b>
@@ -159,58 +161,6 @@ const Successful = () => {
                 <li>Данс эзэмшигч: БАТБАЯР МӨНХЖИН</li>
                 <li>Дансны дугаар: 5023171178</li>
               </ul> */}
-            </div>
-          </div>
-
-          <div className={css.details}>
-            <b className={css.infoTitle}>Захиалгын дэлгэрэнгүй</b>
-
-            <div className={css.details_content}>
-              <ul className={css.details_content_row}>
-                <li>
-                  <b className={css.row_title}>Холбоо барих мэдээлэл</b>
-                  <ul>{data?.contact_email}</ul>
-                </li>
-
-                <li>
-                  <b className={css.row_title}>Хүргэлтийн хаяг</b>
-                  <ul>
-                    <li>{data?.customer?.default_address?.name}</li>
-                    <li>{data?.customer?.default_address?.address1}</li>
-                    <li>{data?.customer?.default_address?.city}</li>
-                    <li>{data?.customer?.default_address?.zip}</li>
-                    <li>{data?.customer?.default_address?.country}</li>
-                    <li>{data?.customer?.default_address?.phone}</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <b className={css.row_title}>Хүргэлт</b>
-                  <ul>{data?.shipping_lines[0]?.title}</ul>
-                </li>
-              </ul>
-
-              <ul className={css.details_content_row}>
-                <li>
-                  <b className={css.row_title}>Payment method</b>
-                  <ul>
-                    {data?.payment_gateway_names[0]} -{' '}
-                    <b className={css.amount}>₮ 188000</b>
-                  </ul>
-                </li>
-
-                <li>
-                  <b className={css.row_title}>Billing address</b>
-                  <ul>
-                    <li>{data?.customer?.default_address?.name}</li>
-                    <li>{data?.customer?.default_address?.address1}</li>
-                    <li>{data?.customer?.default_address?.city}</li>
-                    <li>{data?.customer?.default_address?.zip}</li>
-                    <li>{data?.customer?.default_address?.country}</li>
-                    <li>{data?.customer?.default_address?.phone}</li>
-                  </ul>
-                </li>
-              </ul>
             </div>
           </div>
 
@@ -255,10 +205,6 @@ const Successful = () => {
           <hr />
 
           <div className={css.summary_payment}>
-            <p>Нийт</p>
-            <b>₮188000</b>
-          </div>
-          <div className={css.summary_payment}>
             <p>Хүргэлт</p>
             <b>
               Хотын А бүсэд үнэгүй Б бүсэд нэмэлт төлбөр бодогдохыг анхаарна уу!
@@ -271,13 +217,6 @@ const Successful = () => {
           </div> */}
 
           <hr />
-
-          <div className={css.summary_payment}>
-            <p>Нийт</p>
-            <span className={css.summary_total_payment}>
-              MNT <span>₮ 188000</span>
-            </span>
-          </div>
         </div>
       </div>
     </div>
