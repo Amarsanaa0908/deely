@@ -1,11 +1,16 @@
+import { apiList, callGet } from '@/pages/api/api';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { QRCodeCanvas } from 'qrcode.react';
 import Modal from 'react-minimal-modal';
 
 const PaymentModal = ({ open, setOpen, data, id }) => {
+  const router = useRouter();
+  console.log(data);
+
   const handleClick = () => {
     callGet(`${apiList.payment}/check/${data?.orderId}`).then((res) => {
-      if (res?.status) {
+      if (res?.data === 'COMPLETED') {
         router.push(`/successful/${res?.data}`);
       }
     });
