@@ -3,6 +3,7 @@ import Input from '@/components/Input';
 import PaymentModal from '@/components/Modals/PaymentModal';
 import RadioButton from '@/components/RadioButton';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -64,12 +65,14 @@ const Checkout = () => {
       <div>
         <div className='bg-white border-b border-gray-300 h-[100px]'>
           <div className='items-center flex mx-auto justify-center h-full'>
-            <Image
-              width={200}
-              height={200}
-              alt={`Deely Logo`}
-              src={`https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447`}
-            />
+            <Link href={'https://www.thedeely.com'}>
+              <Image
+                width={200}
+                height={200}
+                alt={`Deely Logo`}
+                src={`https://cdn.shopify.com/s/files/1/0548/9265/8940/files/deely_x320.png?v=1632205447`}
+              />
+            </Link>
           </div>
           <div></div>
         </div>
