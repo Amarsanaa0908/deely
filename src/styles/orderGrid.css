@@ -6,6 +6,7 @@
   display: grid;
   grid-template-columns: auto 600px 500px auto;
 
+  background-color: white;
   grid-template-areas:
     '.            oderForm      orderInfo   orderInfo'
     'orderFooter  orderFooter   orderInfo   orderInfo';
@@ -13,7 +14,7 @@
 
 .orderGrid_form {
   grid-area: oderForm;
-
+  background-color: white;
   border-right: 1px solid var(--gray);
   padding: 36px 36px 36px 0;
 }

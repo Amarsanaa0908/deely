@@ -84,7 +84,7 @@ const Checkout = () => {
             >
               <div className='gap-4 flex-col flex'>
                 <span className='flex flex-col-reverse lg:flex-row justify-between items-center gap-1'>
-                  <h4>Холбоо барих мэдээлэл</h4>
+                  <h4 className='text-black'>Холбоо барих мэдээлэл</h4>
                 </span>
 
                 <Input
@@ -99,12 +99,14 @@ const Checkout = () => {
 
                 <div className='flex'>
                   <Checkbox />
-                  <span>Цаашид и-мэйл ээр мэдээлэл авмаар байна</span>
+                  <span className='text-black'>
+                    Цаашид и-мэйл ээр мэдээлэл авмаар байна
+                  </span>
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
                 <span className='flex flex-col-reverse lg:flex-row justify-between items-center gap-1'>
-                  <h4>Хүргэлтийн мэдээлэл</h4>
+                  <h4 className='text-black'>Хүргэлтийн мэдээлэл</h4>
                 </span>
 
                 {/* <Input
@@ -198,7 +200,7 @@ const Checkout = () => {
                 />
               </div>
 
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 text-black'>
                 <h5>Хүргэлтийн хэлбэр</h5>
 
                 <div className='bg-[#EEF8FD] h-11 border-[#4FBDE4] border flex justify-between items-center bg-primary rounded-md px-2'>
@@ -207,7 +209,7 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 text-black'>
                 <h4>Төлбөрийн хэлбэр</h4>
 
                 <RadioButton
@@ -252,18 +254,20 @@ const Checkout = () => {
                           </p>
                         </figure>
 
-                        <span>
+                        <span className='text-black'>
                           {el.name}
-                          <p className='text-gray-500 text-xs'>{el.variant}</p>
+                          <p className='text-black text-xs'>{el.variant}</p>
                         </span>
                       </div>
 
-                      <label>₮ {el.price * el.quantity}</label>
+                      <label className='text-black'>
+                        ₮ {el.price * el.quantity}
+                      </label>
                     </div>
                   );
                 })}
 
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 text-black'>
                 <p className='flex justify-between'>
                   <label>Нийт</label>
                   <b>{price}</b>
