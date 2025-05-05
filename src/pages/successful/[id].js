@@ -4,7 +4,6 @@ import { FaAngleDown } from 'react-icons/fa6';
 import { LuShoppingCart } from 'react-icons/lu';
 
 import css from '@/styles/thankU.module.css';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { apiList, callGet } from '../api/api';
@@ -137,7 +136,7 @@ const Successful = () => {
 
           <div className={css.bank}>
             <div className={css.bank_map}>
-              <Image
+              <img
                 className='w-full h-[200px] p-1'
                 width={500}
                 height={500}

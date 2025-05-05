@@ -2,7 +2,6 @@ import Checkbox from '@/components/Checkbox';
 import Input from '@/components/Input';
 import PaymentModal from '@/components/Modals/PaymentModal';
 import RadioButton from '@/components/RadioButton';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -66,7 +65,7 @@ const Checkout = () => {
         <div className='bg-white border-b border-gray-300 h-[100px]'>
           <div className='items-center flex mx-auto justify-center h-full'>
             <Link href={'https://www.thedeely.com'}>
-              <Image
+              <img
                 width={200}
                 height={200}
                 alt={`Deely Logo`}
@@ -241,7 +240,7 @@ const Checkout = () => {
                     <div key={i} className='flex justify-between items-center'>
                       <div className='flex items-center gap-2'>
                         <figure className='relative w-16 h-16'>
-                          <Image
+                          <img
                             width={200}
                             height={200}
                             className='w-full h-full object-cover border rounded-md'

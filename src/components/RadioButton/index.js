@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import css from './style.module.css';
 
 const RadioButton = ({
@@ -31,13 +30,7 @@ const RadioButton = ({
 
       {icon && (
         <span className={css.icon}>
-          <Image
-            alt={icon}
-            width={200}
-            height={200}
-            className='w-8'
-            src={icon}
-          />
+          <img alt={icon} width={200} height={200} className='w-8' src={icon} />
         </span>
       )}
       {rightZone && rightZone}

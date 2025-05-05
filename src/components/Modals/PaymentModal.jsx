@@ -1,5 +1,4 @@
 import { apiList, callGet } from '@/pages/api/api';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { QRCodeCanvas } from 'qrcode.react';
 import Modal from 'react-minimal-modal';
@@ -27,7 +26,7 @@ const PaymentModal = ({ open, setOpen, data, id }) => {
               return (
                 <li key={i}>
                   <a href={el.link}>
-                    <Image alt={el.logo} width={50} height={50} src={el.logo} />
+                    <img alt={el.logo} width={50} height={50} src={el.logo} />
                   </a>
                 </li>
               );
