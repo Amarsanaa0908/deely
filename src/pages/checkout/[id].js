@@ -16,6 +16,7 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState();
   const [openModal, setOpenModal] = useState(false);
+  const [selected,setSelected] = useState("free");
   const {
     register,
     handleSubmit,
@@ -45,6 +46,7 @@ const Checkout = () => {
       postal: data.postal,
       additionalNumber: data.additionalNumber,
       price: price,
+      deliveryType: selected,
     }).then((res) => {
       setLoading(false);
       if (res.status) {
@@ -199,15 +201,72 @@ const Checkout = () => {
                 />
               </div>
 
-              <div className='flex flex-col gap-2 text-black'>
-                <h5>Хүргэлтийн хэлбэр</h5>
+              <div className="space-y-2">
+      {/* Free delivery option */}
+      <label
+        className={`flex items-start p-4 border rounded-lg cursor-pointer ${
+          selected === "free"
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="delivery"
+          value="free"
+          checked={selected === "free"}
+          onChange={() => setSelected("free")}
+          className="mt-1 mr-3 accent-blue-600"
+        />
+        <div className="flex justify-between w-full">
+          <span className="text-sm font-medium text-gray-900">
+            24–48 цагийн хооронд хүргэгдэнэ
+          </span>
+          <span className="text-sm font-semibold text-blue-600 mt-1">
+            ҮНЭГҮЙ
+          </span>
+        </div>
+      </label>
 
-                <div className='bg-[#EEF8FD] h-11 border-[#4FBDE4] border flex justify-between items-center bg-primary rounded-md px-2'>
+      {/* Paid delivery option */}
+      <label
+        className={`flex items-start p-4 border rounded-lg cursor-pointer ${
+          selected === "paid"
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="delivery"
+          value="paid"
+          checked={selected === "paid"}
+          onChange={() => setSelected("paid")}
+          className="mt-1 mr-3 accent-blue-600"
+        />
+        <div className="flex flex-col">
+          <span className="text-sm font-medium text-gray-900">UB cab хүргэлт</span>
+          <span className="text-sm text-gray-500">Зөвхөн ажлын цагаар</span>
+        </div>
+        <div className="ml-auto text-sm font-semibold text-gray-800">
+          ₮ 20,000.00
+        </div>
+      </label>
+    </div>
+
+              {/* <div className='flex flex-col gap-2 text-black'>
+                <h5>Хүргэлтийн хэлбэр</h5>
+                <div className='border-[#4FBDE4] border rounded-md'>
+                  <div className='bg-[#EEF8FD] h-11  border flex justify-between items-center bg-primary px-2'>
                   24-48 цагийн хооронд хүргэгдэнэ
                   <b>Үнэгүй</b>
+                  </div>
+                  <div className='bg-[#EEF8FD] h-16 border flex justify-between items-center bg-primary px-2'>
+                    24-48 цагийн хооронд хүргэгдэнэ
+                    <b>₮20,000.00</b>
+                  </div>
                 </div>
-              </div>
-
+              </div> */}
               <div className='flex flex-col gap-2 text-black'>
                 <h4>Төлбөрийн хэлбэр</h4>
 
