@@ -332,7 +332,7 @@ const Checkout = () => {
                 </p>
 
                 <p className='flex justify-between'>
-                  <label>Хүргэлт</label> Үнэгүй
+                  <label>Хүргэлт</label> {selected === 'free' ? 'Үнэгүй' : '20,000.00'} 
                 </p>
 
                 <p className='flex justify-between'>
