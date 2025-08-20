@@ -31,7 +31,7 @@ const Checkout = () => {
         if (selected === 'free') {
 setPrice(res?.data?.amount);
         } else {
-          setPrice(res?.data?.amount + 20000)
+          setPrice(Number(res?.data?.amount) + 20000)
         }
         
       });
