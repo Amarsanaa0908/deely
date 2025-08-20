@@ -28,10 +28,15 @@ const Checkout = () => {
     if (id) {
       callGet(`${apiList.draft}/${id}`).then((res) => {
         setItems(res?.data?.lineItems);
-        setPrice(res?.data?.amount);
+        if (selected === 'free') {
+setPrice(res?.data?.amount);
+        } else {
+          setPrice(res?.data?.amount + 20000)
+        }
+        
       });
     }
-  }, [id]);
+  }, [id, selected]);
 
   const onSubmit = (data) => {
     setLoading(true);
